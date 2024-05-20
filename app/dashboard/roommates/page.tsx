@@ -39,7 +39,7 @@ const ads = [
     name: "Fumilayo Adeyemi",
     age: "26",
     occupation: "Freelancer",
-    pronouns: "She/her",
+    pronouns: "her",
     hobbies: [
       "Working Out",
       " Reading",
