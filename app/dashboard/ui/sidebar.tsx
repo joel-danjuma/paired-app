@@ -18,31 +18,31 @@ const menuItems = [
     title: "Messages",
     icon: MessageIcon,
     href: "/dashboard/messages",
-    position: "top",
+    position: "bottom",
   },
   {
     title: "People",
     icon: UserIcon,
     href: "/dashboard/people",
-    position: "top",
+    position: "bottom",
   },
   {
     title: "Settings",
     icon: SettingsIcon,
     href: "/dashboard/settings",
-    position: "top",
+    position: "bottom",
   },
   {
     title: "Rooms",
     icon: UserIcon,
     href: "/dashboard/rooms",
-    position: "bottom",
+    position: "top",
   },
   {
     title: "Roommates",
     icon: UserIcon,
     href: "/dashboard/roommates",
-    position: "bottom",
+    position: "top",
   },
 ];
 

@@ -156,7 +156,7 @@ export const DashNavbar = () => {
                   className={clsx(
                     "flex gap-3 items-center hover:bg-[#F1EEFD] rounded-lg bg-opacity-25 px-4 w-full h-[35px] transition-colors",
                     {
-                      "bg-[#6359E9]": `/dashboard${link.href}` == pathName,
+                      "bg-[#6359E9]": link.href == pathName,
                     }
                   )}
                 >
