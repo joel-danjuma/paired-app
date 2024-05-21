@@ -20,12 +20,12 @@ const menuItems = [
     href: "/dashboard/messages",
     position: "bottom",
   },
-  {
-    title: "People",
-    icon: UserIcon,
-    href: "/dashboard/people",
-    position: "bottom",
-  },
+  // {
+  //   title: "People",
+  //   icon: UserIcon,
+  //   href: "/dashboard/people",
+  //   position: "bottom",
+  // },
   {
     title: "Settings",
     icon: SettingsIcon,
@@ -85,7 +85,14 @@ const DashSidebar = () => {
                 ))}
             </div>
             <Divider className="w-full px-4" />
-            <div className="w-full h-[100px] mt-auto ">
+            <div className="px-4 py-4 flex justify-between items-center">
+              <span>My Paired</span>
+              <button className="w-5 h-5 border p-1 flex justify-center items-center">
+                +
+              </button>
+            </div>
+
+            <div className="w-full h-fit mt-auto ">
               <ul className="flex-col flex justify-center items-start space-y-4">
                 {menuItems
                   .filter((link) => link.position === "bottom")
@@ -106,7 +113,7 @@ const DashSidebar = () => {
                   ))}
               </ul>
             </div>
-            <div className="px-3  flex justify-center items-center">
+            <div className="px-3 py-8 flex justify-center items-center">
               <Card className="w-full bg-gray-100">
                 <CardHeader className="flex justify-center items-center">
                   <div className="-mt-20 rounded-full bg-gray-100 max-w-sm max-h-sm">
