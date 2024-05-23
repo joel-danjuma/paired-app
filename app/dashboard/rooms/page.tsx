@@ -14,6 +14,7 @@ import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
 import { UserIcon } from "@/app/dashboard/ui/icons/users";
 import { FilterIcon } from "@/app/dashboard/ui/icons/filter";
 import { SecondaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
+import RoomCard from "../ui/roomCard";
 
 const array = [1, 2, 3, 4, 5, 6, 7];
 
