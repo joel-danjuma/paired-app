@@ -1,28 +1,29 @@
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 
-const RoomateCard = (roommateAd: {
-  image: string;
+interface RoommateAdProps {
+  img: StaticImageData;
   name: string;
   age: string;
   occupation: string;
   pronouns: string;
   hobbies: string[];
   bio: string;
-  paired: boolean;
-}) => {
+}
+
+const RoommateCard = (roommateAd: RoommateAdProps) => {
   return (
     <>
       <Card className="flex max-w-[340px] h-[680px] flex-col  lg:row-span-2 lg:col-span-1 row-span-1 col-span-full md:col-span-1 md:row-span-2">
         <CardHeader className="relative h-[260px]">
           <div className="w-full h-full absolute top-0 bg-black bg-opacity-25"></div>
-          <Image src={roommateAd.image} alt="img" fill></Image>
+          <Image src={roommateAd.img} alt="img" fill></Image>
         </CardHeader>
 
-        <CardBody className="flex-col relative h-fit space-y-4">
-          <div className="flex space-y-2 items-center justify-center">
+        <CardBody className="flex flex-col relative h-fit gap-4 w-full p-0">
+          <div className="flex w-full flex-col space-y-2 items-center justify-center border-b py-2">
             <h2>{roommateAd.name}</h2>
             <div className="inline-flex space-x-2 justify-center items-center">
               <p>Age {roommateAd.age}</p>
@@ -30,16 +31,19 @@ const RoomateCard = (roommateAd: {
               <p>{roommateAd.pronouns}</p>
             </div>
           </div>
-          <div className="grid grid-cols-3 grid-flow-row place-items-center max-h-[40px]">
+          <div className="grid grid-cols-3 grid-flow-row place-items-center gap-2 px-3">
             {roommateAd.hobbies.map((hobby, i) => {
               return (
-                <div key={i} className="rounded-full p-1 border col-span-1">
-                  {hobby}
+                <div
+                  key={i}
+                  className=" flex justify-center items-center rounded-full p-1 w-[100px] h-[30px] border-2 col-span-1"
+                >
+                  <p className="text-[8px]">{hobby}</p>
                 </div>
               );
             })}
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center px-3">
             <p className="text-justify text-lg">{roommateAd.bio}</p>
           </div>
         </CardBody>
@@ -69,4 +73,4 @@ const RoomateCard = (roommateAd: {
   );
 };
 
-export default RoomateCard;
+export default RoommateCard;

@@ -87,7 +87,7 @@ const DashSidebar = () => {
             <Divider className="w-full px-4" />
             <div className="px-4 py-4 flex justify-between items-center">
               <span>My Paired</span>
-              <button className="w-5 h-5 border p-1 flex justify-center items-center">
+              <button className="w-5 h-5 border p-1 flex justify-center items-center rounded-md text-[12px]">
                 +
               </button>
             </div>
