@@ -26,6 +26,7 @@ import { SearchIcon } from "@/components/icons";
 import logoSmall from "@/public/pairedLogo.png";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
+import { SignOutButton } from "@/app/dashboard/ui/signout-button";
 import { NotificationIcon } from "@/app/dashboard/ui/icons/notification";
 
 export const DashNavbar = () => {
@@ -102,7 +103,7 @@ export const DashNavbar = () => {
         className="basis-1 pl-0 flex w-[100px] gap-4 lg:hidden"
         justify="end"
       >
-        {/* <SignOutButton /> */}
+        <SignOutButton />
 
         <NavbarMenuToggle />
       </NavbarContent>
