@@ -33,24 +33,6 @@ export const siteConfig = {
   dashNavMenuItems: [
     { title: "Home", icon: DashboardIcon, href: "/dashboard", position: "top" },
     {
-      title: "Messages",
-      icon: MessageIcon,
-      href: "/dashboard/messages",
-      position: "top",
-    },
-    {
-      title: "People",
-      icon: UserIcon,
-      href: "/dashboard/people",
-      position: "top",
-    },
-    {
-      title: "Settings",
-      icon: SettingsIcon,
-      href: "/dashboard/settings",
-      position: "top",
-    },
-    {
       title: "Rooms",
       icon: UserIcon,
       href: "/dashboard/rooms",
@@ -61,6 +43,18 @@ export const siteConfig = {
       icon: UserIcon,
       href: "/dashboard/roommates",
       position: "bottom",
+    },
+    {
+      title: "Messages",
+      icon: MessageIcon,
+      href: "/dashboard/messages",
+      position: "top",
+    },
+    {
+      title: "Settings",
+      icon: SettingsIcon,
+      href: "/dashboard/settings",
+      position: "top",
     },
   ],
   navMenuItems: [

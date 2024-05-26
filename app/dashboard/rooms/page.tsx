@@ -14,12 +14,15 @@ import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
 import { UserIcon } from "@/app/dashboard/ui/icons/users";
 import { FilterIcon } from "@/app/dashboard/ui/icons/filter";
 import { SecondaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
+import { DashNavbar } from "../ui/navbar";
+import RoomCard from "../ui/roomCard";
 
 const array = [1, 2, 3, 4, 5, 6, 7];
 
 const page = () => {
   return (
     <section className="h-full w-full">
+      <DashNavbar />
       <div className="flex-col w-full justify-center items-center border-b space-y-8 py-14">
         <div className="flex justify-between items-center  lg:px-8 px-4">
           <h1 className="lg:text-4xl text-xl font-bold text-start">

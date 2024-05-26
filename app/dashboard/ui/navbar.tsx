@@ -10,9 +10,9 @@ import {
 } from "@nextui-org/navbar";
 import clsx from "clsx";
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Kbd } from "@nextui-org/kbd";
-import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 import { Logo } from "@/components/icons";
 import { siteConfig } from "@/config/site";
@@ -54,7 +54,7 @@ export const DashNavbar = () => {
 
   return (
     <NextUINavbar
-      isMenuOpen={isMenuOpen}
+      // isMenuOpen={isMenuOpen}
       maxWidth="full"
       position="sticky"
       className="px-4 border-b h-[80px]"
@@ -84,9 +84,15 @@ export const DashNavbar = () => {
       </NavbarContent>
 
       <NavbarContent className="lg:flex hidden" justify="end">
-        <CalendarIcon />
-        <MessageIcon />
-        <NotificationIcon />
+        <button>
+          <CalendarIcon />
+        </button>
+        <button>
+          <MessageIcon />
+        </button>
+        <button>
+          <NotificationIcon />
+        </button>
         <Avatar
           size="sm"
           src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
@@ -97,49 +103,9 @@ export const DashNavbar = () => {
         justify="end"
       >
         {/* <SignOutButton /> */}
+
         <NavbarMenuToggle />
       </NavbarContent>
-      {/* <NavbarContent justify="start" className="sm:hidden basis-1">
-        <Link className="lg:hidden flex justify-start items-center" href="/">
-          <Image src={logoSmall} alt="logo" width={52}></Image>
-        </Link>
-      </NavbarContent>
-
-      <NavbarContent
-        justify="start"
-        className="max-w-[800px] px-4 hidden sm:flex basis-1/5 sm:basis-full"
-      >
-        {searchInput}
-      </NavbarContent>
-
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <ThemeSwitch />
-        </NavbarItem>
-
-        <NavbarItem className="hidden md:flex">
-          <Button
-            onClick={() => {
-              setIsMenuOpen(!isMenuOpen);
-            }}
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={"#"}
-            variant="flat"
-          >
-            Login
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <ThemeSwitch />
-        <NavbarMenuToggle />
-      </NavbarContent> */}
 
       <NavbarMenu className="pt-8">
         {searchInput}
@@ -156,7 +122,7 @@ export const DashNavbar = () => {
                   className={clsx(
                     "flex gap-3 items-center hover:bg-[#F1EEFD] rounded-lg bg-opacity-25 px-4 w-full h-[35px] transition-colors",
                     {
-                      "bg-[#6359E9]": `/dashboard${link.href}` == pathName,
+                      "bg-[#6359E9]": link.href == pathName,
                     }
                   )}
                 >

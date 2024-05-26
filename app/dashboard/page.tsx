@@ -91,7 +91,7 @@ const Dashboard = () => {
                 <div className="flex gap-2 overflow-auto hide-scrollbar">
                   {arr2.map((item, i) => (
                     <Button
-                      className="lg:w-[40] lg:h-[12] w-[40] h-[12] text-sm rounded-full px-2 p-1 "
+                      className="lg:w-[40] lg:h-[24] w-[40] h-[24] text-sm rounded-full px-2 "
                       variant="bordered"
                       key={i}
                     >

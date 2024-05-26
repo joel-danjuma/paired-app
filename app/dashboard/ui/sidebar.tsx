@@ -18,31 +18,31 @@ const menuItems = [
     title: "Messages",
     icon: MessageIcon,
     href: "/dashboard/messages",
-    position: "top",
+    position: "bottom",
   },
-  {
-    title: "People",
-    icon: UserIcon,
-    href: "/dashboard/people",
-    position: "top",
-  },
+  // {
+  //   title: "People",
+  //   icon: UserIcon,
+  //   href: "/dashboard/people",
+  //   position: "bottom",
+  // },
   {
     title: "Settings",
     icon: SettingsIcon,
     href: "/dashboard/settings",
-    position: "top",
+    position: "bottom",
   },
   {
     title: "Rooms",
     icon: UserIcon,
     href: "/dashboard/rooms",
-    position: "bottom",
+    position: "top",
   },
   {
     title: "Roommates",
     icon: UserIcon,
     href: "/dashboard/roommates",
-    position: "bottom",
+    position: "top",
   },
 ];
 
@@ -53,19 +53,13 @@ const DashSidebar = () => {
     <div className="lg:flex hidden h-[100dvh] ">
       <div className="flex flex-col w-64">
         <div className="flex flex-col flex-grow overflow-y-auto bg-white border-r">
-          <div className="flex flex-col px-8 border-b h-[80px] justify-center items-center ">
+          <div className="flex flex-col px-8 border-b min-h-[80px] justify-center items-center ">
             <Link className="" href="/">
-              {/* <Image
-                                src={logo}
-                                alt="logo"
-                                width={140}
-                               
-                            ></Image> */}
               <PrimaryLogo />
             </Link>
           </div>
           <div className="w-full flex flex-col gap-2 px-2">
-            <div className="flex-col flex justify-center items-start space-y-4 py-8">
+            <div className="flex-col flex justify-center items-start space-y-4 py-[57.5px]">
               {menuItems
                 .filter((link) => link.position === "top")
                 .map((link, i) => (
@@ -85,7 +79,14 @@ const DashSidebar = () => {
                 ))}
             </div>
             <Divider className="w-full px-4" />
-            <div className="w-full h-[100px] mt-auto ">
+            <div className="px-4 py-4 flex justify-between items-center">
+              <span>My Paired</span>
+              <button className="w-5 h-5 border p-1 flex justify-center items-center rounded-md text-[12px]">
+                +
+              </button>
+            </div>
+
+            <div className="w-full h-fit mt-auto ">
               <ul className="flex-col flex justify-center items-start space-y-4">
                 {menuItems
                   .filter((link) => link.position === "bottom")
@@ -106,7 +107,7 @@ const DashSidebar = () => {
                   ))}
               </ul>
             </div>
-            <div className="px-3  flex justify-center items-center">
+            <div className="px-3 py-8 flex justify-center items-center">
               <Card className="w-full bg-gray-100">
                 <CardHeader className="flex justify-center items-center">
                   <div className="-mt-20 rounded-full bg-gray-100 max-w-sm max-h-sm">

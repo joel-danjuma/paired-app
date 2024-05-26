@@ -21,7 +21,7 @@ import NextLink from "next/link";
 import clsx from "clsx";
 import Image from "next/image";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { GithubIcon, SearchIcon } from "@/components/icons";
+import { SearchIcon } from "@/components/icons";
 import { PrimaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
 
 export const Navbar = () => {
@@ -47,7 +47,7 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
+    <NextUINavbar maxWidth="full" position="sticky">
       <NavbarContent justify="start">
         <Link className="lg:hidden flex justify-start items-center" href="/">
           <Image src={logoSmall} alt="logo" width={40} className=""></Image>
