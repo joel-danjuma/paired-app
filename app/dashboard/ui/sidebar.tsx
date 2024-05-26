@@ -53,19 +53,13 @@ const DashSidebar = () => {
     <div className="lg:flex hidden h-[100dvh] ">
       <div className="flex flex-col w-64">
         <div className="flex flex-col flex-grow overflow-y-auto bg-white border-r">
-          <div className="flex flex-col px-8 border-b h-[80px] justify-center items-center ">
+          <div className="flex flex-col px-8 border-b min-h-[80px] justify-center items-center ">
             <Link className="" href="/">
-              {/* <Image
-                                src={logo}
-                                alt="logo"
-                                width={140}
-                               
-                            ></Image> */}
               <PrimaryLogo />
             </Link>
           </div>
           <div className="w-full flex flex-col gap-2 px-2">
-            <div className="flex-col flex justify-center items-start space-y-4 py-8">
+            <div className="flex-col flex justify-center items-start space-y-4 py-[57.5px]">
               {menuItems
                 .filter((link) => link.position === "top")
                 .map((link, i) => (

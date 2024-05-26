@@ -15,6 +15,7 @@ import { UserIcon } from "@/app/dashboard/ui/icons/users";
 import { FilterIcon } from "@/app/dashboard/ui/icons/filter";
 import { SecondaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
 import RoommateCard from "./ui/roommateCard";
+import { DashNavbar } from "../ui/navbar";
 // import { Pic1, Pic2, Pic3 } from "./ui/pics"
 
 const array = [1, 2, 3, 4, 5, 6, 7];
@@ -75,6 +76,7 @@ const ads = [
 const page = () => {
   return (
     <section className="h-full w-full">
+      <DashNavbar />
       <div className="flex-col w-full justify-center items-center border-b space-y-8 py-14">
         <div className="flex justify-between items-center  lg:px-8 px-4">
           <h1 className="lg:text-4xl text-xl font-bold text-start">
@@ -126,10 +128,11 @@ const page = () => {
           })}
         </div>
       </div>
+      <a id="create-listing" href="#" className="hidden" />
+      <div></div>
       <div className="lg:px-8 px-4">
-        <a id="create-listing" href="#" className="hidden"></a>
-        <h1 className="lg:text-4xl text-xl font-bold text-start py-16">
-          Create Listing
+        <h1 className="lg:text-4xl text-xl font-bold text-start py-8">
+          Create Profile Card
         </h1>
         <RoommateAdForm />
       </div>
