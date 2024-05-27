@@ -1,21 +1,21 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
-import Avatars from "@/app/dashboard/ui/avatar";
-import RoomAdForm from "@/app/dashboard/rooms/ui/roomAdForm";
+import RoomCard from "../ui/roomCard";
 import img from "@/public/heroImg1.jpg";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import { DashNavbar } from "../ui/navbar";
 import { Button } from "@nextui-org/button";
 import { Divider } from "@nextui-org/divider";
+import Avatars from "@/app/dashboard/ui/avatar";
 import { Avatar, AvatarGroup } from "@nextui-org/avatar";
-import { MessageIcon } from "@/app/dashboard/ui/icons/messages";
-import Link from "next/link";
-import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
 import { UserIcon } from "@/app/dashboard/ui/icons/users";
+import RoomAdForm from "@/app/dashboard/rooms/ui/roomAdForm";
 import { FilterIcon } from "@/app/dashboard/ui/icons/filter";
+import { MessageIcon } from "@/app/dashboard/ui/icons/messages";
+import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
 import { SecondaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
-import { DashNavbar } from "../ui/navbar";
-import RoomCard from "../ui/roomCard";
+import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 
 const array = [1, 2, 3, 4, 5, 6, 7];
 

@@ -1,13 +1,13 @@
 import React from "react";
+import { auth } from "@/auth";
 import Image from "next/image";
-import { Card, CardBody, CardHeader } from "@nextui-org/card";
-import { DashNavbar } from "./ui/navbar";
 import Group from "./ui/avatarGroup";
-import img from "@/public/pairedLogoPurple.png";
-import img2 from "@/public/pairedLogoPurple2.svg";
+import { DashNavbar } from "./ui/navbar";
 import { Avatar } from "@nextui-org/avatar";
 import { Button } from "@nextui-org/button";
-import { SessionProvider } from "next-auth/react";
+import img from "@/public/pairedLogoPurple.png";
+import img2 from "@/public/pairedLogoPurple2.svg";
+import { Card, CardBody, CardHeader } from "@nextui-org/card";
 
 const arr = new Array(5).fill({
   name: "Olabisi Oluwatosin",
@@ -21,12 +21,10 @@ const arr = new Array(5).fill({
 
 const arr2 = new Array(7).fill("Swimming");
 
-const Dashboard = () => {
+const Dashboard = async () => {
+  const session = await auth();
   return (
     <>
-      {/* <SessionProvider>
-        <DashNavbar />
-      </SessionProvider> */}
       <DashNavbar />
       <header>
         <div className="relative flex w-full items-center bg-gradient-to-b from-[#F1EEFD] to-white bg-opacity-90 h-[140px] border-b">
