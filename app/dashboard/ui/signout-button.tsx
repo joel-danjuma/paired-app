@@ -6,7 +6,10 @@ import React from "react";
 
 export const SignOutButton = () => {
   return (
-    <Button className="w-[100px] gap-1.5 text-sm" onClick={() => signOut()}>
+    <Button
+      className="w-full gap-1.5 text-lg text-white bg-[#6359E9]"
+      onClick={() => signOut()}
+    >
       Signout
     </Button>
   );

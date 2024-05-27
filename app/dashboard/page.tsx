@@ -7,6 +7,7 @@ import img from "@/public/pairedLogoPurple.png";
 import img2 from "@/public/pairedLogoPurple2.svg";
 import { Avatar } from "@nextui-org/avatar";
 import { Button } from "@nextui-org/button";
+import { SessionProvider } from "next-auth/react";
 
 const arr = new Array(5).fill({
   name: "Olabisi Oluwatosin",
@@ -23,6 +24,9 @@ const arr2 = new Array(7).fill("Swimming");
 const Dashboard = () => {
   return (
     <>
+      {/* <SessionProvider>
+        <DashNavbar />
+      </SessionProvider> */}
       <DashNavbar />
       <header>
         <div className="relative flex w-full items-center bg-gradient-to-b from-[#F1EEFD] to-white bg-opacity-90 h-[140px] border-b">

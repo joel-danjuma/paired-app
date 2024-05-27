@@ -90,8 +90,8 @@ const page = () => {
             <Avatars />
           </span>
         </div>
-        <div className="flex justify-between items-center lg:px-8 px-4 w-full">
-          <div className="max-w-[30%] flex  lg:gap-2 justify-between items-center">
+        <div className="flex w-full">
+          <div className="lg:flex grid grid-cols-1 grid-flow-row w-full justify-start gap-4 items-center  lg:px-8 px-4">
             <Button
               className="lg:min-w-[120px] min-w-[80px] rounded-md text-xl border-1 border-black"
               variant="ghost"
@@ -107,12 +107,12 @@ const page = () => {
               Today
             </Button>
           </div>
-          <div className="max-w-[30%] h-fit flex lg:gap-2 justify-between items-center">
-            <Button className="min-w-[120px] rounded-md text-xl text-white bg-purple-900">
+          <div className="lg:flex grid grid-cols-1 grid-flow-row w-full justify-end gap-4 items-center  lg:px-8 px-4">
+            <Button className="lg:min-w-[120px] min-w-[40px] rounded-md lg:text-xl text-sm text-white bg-purple-900">
               <SecondaryLogo />
               <Link href={"#create-listing"}>Create Listing</Link>
             </Button>
-            <Divider orientation="vertical" />
+            <Divider className="lg:fllex hidden" orientation="vertical" />
             <Button
               className="lg:min-w-[120px] min-w-[80px] rounded-md text-xl border-black border-1"
               variant="ghost"
