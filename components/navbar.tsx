@@ -7,21 +7,19 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
+import clsx from "clsx";
+import Image from "next/image";
+import NextLink from "next/link";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
+import { siteConfig } from "@/config/site";
+import { Button } from "@nextui-org/button";
+import { SearchIcon } from "@/components/icons";
 import logoSmall from "@/public/pairedLogo.png";
 import logoFull from "@/public/pairedLogo2.png";
-
 import { link as linkStyles } from "@nextui-org/theme";
-
-import { siteConfig } from "@/config/site";
-import NextLink from "next/link";
-import clsx from "clsx";
-import Image from "next/image";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { SearchIcon } from "@/components/icons";
 import { PrimaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
 
 export const Navbar = () => {

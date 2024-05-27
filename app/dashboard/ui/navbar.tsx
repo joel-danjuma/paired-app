@@ -28,10 +28,11 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
 import { SignOutButton } from "@/app/dashboard/ui/signout-button";
 import { NotificationIcon } from "@/app/dashboard/ui/icons/notification";
+import { useContext } from "react";
 import { useSession } from "next-auth/react";
 
 export const DashNavbar = () => {
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
   const pathName = usePathname();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const searchInput = (
@@ -96,12 +97,10 @@ export const DashNavbar = () => {
         <button>
           <NotificationIcon />
         </button>
-        {/* <div className="flex gap-2 ">
-          <p className="flex-col gap-2">
-            {session?.user.name || `User : ${session?.user.token.sub}`}
-          </p>
-          <Avatar size="sm" src={session?.user.image as string} />
-        </div> */}
+        <div className="flex justify-center items-center gap-2 ">
+          <p className="text-md">{session?.user.name}</p>
+          <Avatar size="sm" src={session?.user.token.picture as string} />
+        </div>
         <div className="max-w-[100px]">
           <SignOutButton />
         </div>
