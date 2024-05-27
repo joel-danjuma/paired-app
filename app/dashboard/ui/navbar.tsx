@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -12,6 +11,7 @@ import clsx from "clsx";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { auth } from "@/auth";
 import { Kbd } from "@nextui-org/kbd";
 import { Input } from "@nextui-org/input";
 import { Logo } from "@/components/icons";
@@ -28,8 +28,10 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
 import { SignOutButton } from "@/app/dashboard/ui/signout-button";
 import { NotificationIcon } from "@/app/dashboard/ui/icons/notification";
+import { useSession } from "next-auth/react";
 
 export const DashNavbar = () => {
+  // const { data: session } = useSession();
   const pathName = usePathname();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const searchInput = (
@@ -94,17 +96,21 @@ export const DashNavbar = () => {
         <button>
           <NotificationIcon />
         </button>
-        <Avatar
-          size="sm"
-          src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-        />
+        {/* <div className="flex gap-2 ">
+          <p className="flex-col gap-2">
+            {session?.user.name || `User : ${session?.user.token.sub}`}
+          </p>
+          <Avatar size="sm" src={session?.user.image as string} />
+        </div> */}
+        <div className="max-w-[100px]">
+          <SignOutButton />
+        </div>
       </NavbarContent>
+
       <NavbarContent
         className="basis-1 pl-0 flex w-[100px] gap-4 lg:hidden"
         justify="end"
       >
-        <SignOutButton />
-
         <NavbarMenuToggle />
       </NavbarContent>
 
@@ -134,6 +140,7 @@ export const DashNavbar = () => {
             </div>
           </NavbarMenuItem>
         </div>
+        <SignOutButton />
       </NavbarMenu>
     </NextUINavbar>
   );

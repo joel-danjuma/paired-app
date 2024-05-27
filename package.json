@@ -1,13 +1,14 @@
 {
-	"name": "Paired",
+	"name": "paired",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbo",
-		"build": "next build",
+		"build": "prisma generate --no-engine && next build",
 		"start": "next start",
-		"lint": "next lint",
-		"postinstall": "prisma generate --no-engine"
+		"lint": "next lint"
+		
+		
 	},
 	"dependencies": {
 		"@auth/prisma-adapter": "^2.1.0",
