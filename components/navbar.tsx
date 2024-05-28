@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -8,6 +9,7 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/navbar";
 import clsx from "clsx";
+import React from "react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { Kbd } from "@nextui-org/kbd";
@@ -15,6 +17,7 @@ import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 import { siteConfig } from "@/config/site";
 import { Button } from "@nextui-org/button";
+import { usePathname } from "next/navigation";
 import { SearchIcon } from "@/components/icons";
 import logoSmall from "@/public/pairedLogo.png";
 import logoFull from "@/public/pairedLogo2.png";
@@ -23,6 +26,8 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { PrimaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
 
 export const Navbar = () => {
+  const pathName = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const searchInput = (
     <Input
       aria-label="Search"
@@ -105,24 +110,35 @@ export const Navbar = () => {
 
       <NavbarMenu className="pt-8">
         {searchInput}
-        <div className="mx-4 mt-2 flex flex-col gap-2">
+        <div className="mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                    ? "danger"
-                    : "foreground"
-                }
-                href="#"
-                size="lg"
+                href={item.href}
+                onClick={() => {
+                  setIsMenuOpen(!isMenuOpen);
+                }}
+                className={clsx(
+                  "flex gap-3 items-center justify-center text-white bg-[#6359E9] hover:bg-[#F1EEFD] text-lg rounded-lg  px-4 w-full h-[35px] transition-colors",
+                  {
+                    "bg-[#6359E9]": item.href == pathName,
+                  }
+                )}
               >
+                {/* <link.icon /> */}
                 {item.label}
               </Link>
             </NavbarMenuItem>
           ))}
+          <Button
+            // isExternal
+            as={Link}
+            className="text-lg font-normal text-white bg-[#6359E9]"
+            href={"/login"}
+            variant="flat"
+          >
+            Login
+          </Button>
         </div>
       </NavbarMenu>
     </NextUINavbar>
