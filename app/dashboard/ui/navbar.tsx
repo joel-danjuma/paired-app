@@ -99,7 +99,7 @@ export const DashNavbar = () => {
         </button>
         <div className="flex justify-center items-center gap-2 ">
           <p className="text-md">{session?.user.name}</p>
-          <Avatar size="sm" src={session?.user.token.picture as string} />
+          <Avatar size="sm" src={session?.user.image as string} />
         </div>
         <div className="max-w-[100px]">
           <SignOutButton />

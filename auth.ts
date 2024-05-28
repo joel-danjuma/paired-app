@@ -29,7 +29,7 @@ const credentialsConfig = CredentialsProvider({
     const validatedFields = LoginSchema.safeParse(credentials);
 
     if (validatedFields.success) {
-      const { email, password } = validatedFields.data;
+      const { name, email, password } = validatedFields.data;
 
       const user = await db.user.findUnique({
         where: {
@@ -39,6 +39,7 @@ const credentialsConfig = CredentialsProvider({
       if (!user || !user.password) {
         const newUser = await db.user.create({
           data: {
+            name,
             email,
             password,
           },
