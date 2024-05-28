@@ -73,7 +73,6 @@ export default async function RootLayout({
         <SessionProvider session={session}>
           <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
             <div className="relative flex flex-col h-screen">
-              {/* <Navbar /> */}
               <main className="">{children}</main>
             </div>
           </Providers>
