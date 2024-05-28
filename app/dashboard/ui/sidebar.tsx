@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { DashboardIcon } from "@/app/dashboard/ui/icons/dashboard";
 import { MessageIcon } from "@/app/dashboard/ui/icons/messages";
 import { UserIcon } from "@/app/dashboard/ui/icons/users";
+import { HouseIcon } from "@/app/dashboard/ui/icons/house";
 import { SettingsIcon } from "@/app/dashboard/ui/icons/settings";
 import { PrimaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
 
@@ -18,7 +19,7 @@ const menuItems = [
     title: "Messages",
     icon: MessageIcon,
     href: "/dashboard/messages",
-    position: "bottom",
+    position: "top",
   },
   // {
   //   title: "People",
@@ -34,12 +35,12 @@ const menuItems = [
   },
   {
     title: "Rooms",
-    icon: UserIcon,
+    icon: HouseIcon,
     href: "/dashboard/rooms",
     position: "top",
   },
   {
-    title: "Roommates",
+    title: "People",
     icon: UserIcon,
     href: "/dashboard/roommates",
     position: "top",
@@ -59,7 +60,7 @@ const DashSidebar = () => {
             </Link>
           </div>
           <div className="w-full flex flex-col gap-2 px-2">
-            <div className="flex-col flex justify-center items-start space-y-4 py-[57.5px]">
+            <div className="flex-col flex justify-start items-start space-y-4 h-[252px] pt-6">
               {menuItems
                 .filter((link) => link.position === "top")
                 .map((link, i) => (
@@ -67,7 +68,7 @@ const DashSidebar = () => {
                     key={i}
                     href={link.href}
                     className={clsx(
-                      "flex gap-3 items-center rounded-lg bg-opacity-25 px-4 w-full h-[35px] transition-colors",
+                      "flex gap-3 items-center rounded-lg bg-opacity-25 px-4  w-full h-[35px] transition-colors",
                       {
                         "bg-[#6359E9]": link.href == pathName,
                       }
@@ -79,7 +80,7 @@ const DashSidebar = () => {
                 ))}
             </div>
             <Divider className="w-full px-4" />
-            <div className="px-4 py-4 flex justify-between items-center">
+            <div className="px-4 py-2 flex justify-between items-center">
               <span>My Paired</span>
               <button className="w-5 h-5 border p-1 flex justify-center items-center rounded-md text-[12px]">
                 +

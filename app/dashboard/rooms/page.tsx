@@ -1,21 +1,21 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
-import Avatars from "@/app/dashboard/ui/avatar";
-import RoomAdForm from "@/app/dashboard/rooms/ui/roomAdForm";
-// import img from "../../../../../public/images/heroImg1.jpg"
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import RoomCard from "../ui/roomCard";
+import img from "@/public/heroImg1.jpg";
+import { DashNavbar } from "../ui/navbar";
 import { Button } from "@nextui-org/button";
 import { Divider } from "@nextui-org/divider";
+import Avatars from "@/app/dashboard/ui/avatar";
 import { Avatar, AvatarGroup } from "@nextui-org/avatar";
-import { MessageIcon } from "@/app/dashboard/ui/icons/messages";
-import Link from "next/link";
-import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
 import { UserIcon } from "@/app/dashboard/ui/icons/users";
+import RoomAdForm from "@/app/dashboard/rooms/ui/roomAdForm";
 import { FilterIcon } from "@/app/dashboard/ui/icons/filter";
+import { MessageIcon } from "@/app/dashboard/ui/icons/messages";
+import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
 import { SecondaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
-import { DashNavbar } from "../ui/navbar";
-import RoomCard from "../ui/roomCard";
+import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 
 const array = [1, 2, 3, 4, 5, 6, 7];
 
@@ -36,8 +36,8 @@ const page = () => {
             <Avatars />
           </span>
         </div>
-        <div className="flex justify-between items-center lg:px-8 px-4 w-full">
-          <div className="max-w-[30%] flex  lg:gap-2 justify-between items-center">
+        <div className="flex w-full">
+          <div className="lg:flex grid grid-cols-1 grid-flow-row w-full justify-start gap-4 items-center  lg:px-8 px-4">
             <Button
               className="lg:min-w-[120px] min-w-[80px] rounded-md text-xl border-1 border-black"
               variant="ghost"
@@ -53,12 +53,12 @@ const page = () => {
               Today
             </Button>
           </div>
-          <div className="max-w-[30%] h-fit flex lg:gap-2 justify-between items-center">
-            <Button className="min-w-[120px] rounded-md text-xl text-white bg-purple-900">
+          <div className="lg:flex grid grid-cols-1 grid-flow-row w-full justify-end gap-4 items-center  lg:px-8 px-4">
+            <Button className="lg:min-w-[120px] min-w-[40px] rounded-md lg:text-xl text-sm text-white bg-purple-900">
               <SecondaryLogo />
               <Link href={"#create-listing"}>Create Listing</Link>
             </Button>
-            <Divider orientation="vertical" />
+            <Divider className="lg:fllex hidden" orientation="vertical" />
             <Button
               className="lg:min-w-[120px] min-w-[80px] rounded-md text-xl border-black border-1"
               variant="ghost"
@@ -91,7 +91,7 @@ const page = () => {
                 </CardHeader>
 
                 <CardBody className="flex-col aspect-video rounded-lg relative">
-                  {/* <Image src={img} alt="img" fill></Image> */}
+                  <Image src={img} alt="img" fill></Image>
                 </CardBody>
                 <CardFooter className="flex justify-between items-end text-xs text-gray-500">
                   <AvatarGroup isBordered>
