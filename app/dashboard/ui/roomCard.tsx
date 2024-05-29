@@ -3,23 +3,23 @@ import Image from "next/image";
 import { Avatar, AvatarGroup } from "@nextui-org/avatar";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 
-const RoomCard = (roomAd: {
+interface RoomAdProps {
+  paired: boolean;
+  spaces: string;
   title: string;
   image: string;
-  connections: React.FC;
+  connections: string;
   comments: string;
-  spaces: string;
-}) => {
+}
+
+const RoomCard = (roomAd: RoomAdProps) => {
   return (
     <>
-      <Card
-        // key={i}
-        className="flex min-w-[320px] h-fit flex-col  lg:row-span-2 lg:col-span-1 p-4 row-span-1 col-span-full md:col-span-1 md:row-span-2"
-      >
+      <Card className="flex min-w-[320px] h-fit flex-col  lg:row-span-2 lg:col-span-1 p-4 row-span-1 col-span-full md:col-span-1 md:row-span-2">
         <CardHeader className="px-0 flex-col space-y-2">
           <div className="w-full flex justify-between items-end">
             <div className="text-red-700 bg-red-100 min-w-fit min-h-fit py-1 px-4 rounded-sm text-[12px]">
-              Paired
+              {roomAd.paired}
             </div>
             <p>...</p>
           </div>

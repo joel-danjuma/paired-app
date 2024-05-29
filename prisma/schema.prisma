@@ -23,7 +23,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   room_ads      RoomAd[]
-  roommate_ad   RoommateAd?
+  profile       UserProfile?
   role          UserRole        @default(USER)
   // Optional for WebAuthn support
   Authenticator Authenticator[]
@@ -112,7 +112,7 @@ model RoomAd {
   @@map("rooms")
 }
 
-model RoommateAd {
+model UserProfile {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
@@ -120,6 +120,8 @@ model RoommateAd {
   occupation  String
   location    String
   budget      Int
+  bio         String
+  hobbies     String[]
   gender      String
   pets        Boolean
   smoking     Boolean
@@ -128,10 +130,10 @@ model RoommateAd {
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
 
-  @@map("roommates")
+  @@map("profile")
 }
 
-model Waitlist {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  email String @unique(map: "email_1")
-}
+// model Waitlist {
+//   id    String @id @default(auto()) @map("_id") @db.ObjectId
+//   email String @unique(map: "email_1")
+// }

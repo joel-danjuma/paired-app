@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 import { signIn } from "@/auth";
 import AuthError from "next-auth";
-import { LoginSchema } from "@/schemas";
+import { LoginSchema, ProfileSchema } from "@/schemas";
 import { RegisterSchema } from "@/schemas";
 
 const session = auth();
@@ -81,6 +81,27 @@ export const createRoomAd = async (formData) => {
   //             },
   //         },
   //     },
+  // })
+};
+
+export const createProfileCard = async (formData) => {
+  const validatedFields = ProfileSchema.safeParse(formData);
+  if (!validatedFields.success) {
+    let errorMessage = "";
+    validatedFields.error.issues.forEach((issue) => {
+      errorMessage = errorMessage + issue.path[0] + ": " + issue.message + ". ";
+    });
+    return {
+      error: errorMessage,
+    };
+  }
+
+  const { userId, location, age } = validatedFields.data;
+
+  // const user = await db.user.findUnique({
+  //   where : {
+  //     id : validatedFields.data.userId
+  //   }
   // })
 };
 
