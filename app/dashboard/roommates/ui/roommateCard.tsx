@@ -1,7 +1,9 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
 import { Button } from "@nextui-org/button";
+import Image, { StaticImageData } from "next/image";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import { RoommateAd } from "@prisma/client";
+import { db } from "@/lib/db";
 
 interface RoommateAdProps {
   img: StaticImageData;
@@ -13,22 +15,26 @@ interface RoommateAdProps {
   bio: string;
 }
 
-const RoommateCard = (roommateAd: RoommateAdProps) => {
+const RoommateCard = async (roommateAd: RoommateAd) => {
+  const user = await db.user.findUnique({
+    where: {
+      id: roommateAd.id,
+    },
+  });
   return (
     <>
       <Card className="flex max-w-[340px] h-[680px] flex-col  lg:row-span-2 lg:col-span-1 row-span-1 col-span-full md:col-span-1 md:row-span-2">
         <CardHeader className="relative h-[260px]">
           <div className="w-full h-full absolute top-0 bg-black bg-opacity-25"></div>
-          <Image src={roommateAd.img} alt="img" fill></Image>
+          <Image src={user?.image as string} alt="img" fill></Image>
         </CardHeader>
 
         <CardBody className="flex flex-col relative h-fit gap-4 w-full p-0">
           <div className="flex w-full flex-col space-y-2 items-center justify-center border-b py-2">
-            <h2>{roommateAd.name}</h2>
+            <h2>{user?.name}</h2>
             <div className="inline-flex space-x-2 justify-center items-center">
               <p>Age {roommateAd.age}</p>
               <p>{roommateAd.occupation}</p>
-              <p>{roommateAd.pronouns}</p>
             </div>
           </div>
           <div className="grid grid-cols-3 grid-flow-row place-items-center gap-2 px-3">

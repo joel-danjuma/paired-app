@@ -1,116 +1,138 @@
 "use client";
 import RoomAdFormButton from "@/app/dashboard/ui/createAdFormButton";
+import { UploadButton, UploadDropzone } from "@/lib/utils";
+import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
+import { Select, SelectItem } from "@nextui-org/select";
+import { Input, Textarea } from "@nextui-org/input";
+import img from "@/public/pairedLogo.png";
+import Image from "next/image";
+import React from "react";
+
+const gender = ["Male", "Female", "Prefer Not to Say"];
 
 const RoommateAdForm = () => {
+  const [imageUrl, setImageUrl] = React.useState<string>("");
+
   return (
-    <section className="h-full pb-20">
-      <form>
-        <div className="mt-4 space-y-4">
-          <div>
-            <label className="block mb-3 text-sm font-medium text-gray-600">
-              Ad Title
-            </label>
-            <input
-              name="title"
-              className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-              placeholder="Your name"
+    <section className="h-full ">
+      <form className="py-2 grid grid-flow-row  lg:grid-cols-2 grid-cols-1 gap-4">
+        <div className="mt-4 space-y-2 lg:col-span-1 col-span-full">
+          <Input
+            size="lg"
+            name="name"
+            label="Name"
+            placeholder="Full Name"
+            labelPlacement="outside"
+          />
+        </div>
+        <div className="mt-4 space-y-2 lg:col-span-1 col-span-full">
+          <Input
+            size="lg"
+            name="age"
+            label="Age"
+            placeholder="age"
+            labelPlacement="outside"
+          />
+        </div>
+        <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
+          <Select
+            size="lg"
+            label="Gender"
+            labelPlacement="outside"
+            placeholder="gender"
+          >
+            {gender.map((item, i) => (
+              <SelectItem className="py-4" key={i}>
+                {item}
+              </SelectItem>
+            ))}
+          </Select>
+        </div>
+
+        <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
+          <Input
+            size="lg"
+            name="location"
+            label="Location"
+            placeholder="Full Name"
+            labelPlacement="outside"
+          />
+        </div>
+        <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
+          <Input
+            size="lg"
+            name="name"
+            label="Interests"
+            placeholder="Full Name"
+            labelPlacement="outside"
+          />
+        </div>
+        <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
+          <Input
+            size="lg"
+            name="name"
+            label="Occupation"
+            placeholder="Full Name"
+            labelPlacement="outside"
+          />
+        </div>
+
+        <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
+          <div className="mt-1">
+            <Textarea
+              size="lg"
+              className="min-h-[240px]"
+              name="description"
+              labelPlacement="outside"
+              label="label"
+              placeholder="What are you working on?"
+              minRows={8}
             />
           </div>
-          <div className="col-span-1">
-            <label className="block mb-3 text-sm font-medium text-gray-600">
-              Age
-            </label>
-            <input
-              name="age"
-              className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-              placeholder="email@example.com"
-              type="email"
-            />
+        </div>
+        <div className="space-y-4 lg:mt-12 mt-4">
+          <div className="space-y-1 lg:col-span-1 col-span-full lg:w-[558.5px] lg:h-[150px] rounded-lg bg-gray-100 relative p-4 flex justify-center items-center">
+            {imageUrl.length ? (
+              <Image
+                className="rounded-lg"
+                src={imageUrl}
+                alt="img"
+                width={200}
+                height={200}
+              />
+            ) : (
+              <Image
+                className="rounded-lg opacity-35"
+                src={img}
+                alt="img"
+                width={200}
+                height={100}
+              />
+            )}
           </div>
-          <div>
-            <label className="block mb-3 text-sm font-medium text-gray-600">
-              Gender
-            </label>
-            <input
-              name="gender"
-              className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-              placeholder="Your name"
-            />
-          </div>
-          <div className="col-span-full">
-            <label className="block mb-3 text-sm font-medium text-gray-600">
-              Budget
-            </label>
-            <input
-              name="budget"
-              className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-              placeholder="Company name"
-            />
-          </div>
-          <div className="col-span-full">
-            <label className="block mb-3 text-sm font-medium text-gray-600">
-              Occupation
-            </label>
-            <input
-              name="Occupation"
-              className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-              placeholder="email@example.com"
-              autoComplete="off"
-              type="email"
-            />
-          </div>
-          <div className="col-span-full">
-            <label className="block mb-3 text-sm font-medium text-gray-600">
-              Location
-            </label>
-            <input
-              name="email"
-              className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-              placeholder="email@example.com"
-              autoComplete="off"
-              type="email"
-            />
-          </div>
-          <div className="col-span-full">
-            <label className="block mb-3 text-sm font-medium text-gray-600">
-              Pets
-            </label>
-            <input
-              name="pets"
-              className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-              placeholder="email@example.com"
-              autoComplete="off"
-              type="email"
-            />
-          </div>
-          <div className="col-span-full">
-            <label className="block mb-3 text-sm font-medium text-gray-600">
-              Smoking
-            </label>
-            <input
-              name="smoking"
-              className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-              placeholder="email@example.com"
-              autoComplete="off"
-              type="email"
-            />
-          </div>
-          <div>
-            <label className="block mb-3 text-sm font-medium text-gray-600">
-              Property Description
-            </label>
-            <div className="mt-1">
-              <textarea
-                name="description"
-                className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-                placeholder="What are you working on?"
-                // rows="4"
-              ></textarea>
-            </div>
-          </div>
-          <div className="col-span-full">
-            <RoomAdFormButton />
-          </div>
+          <UploadButton
+            endpoint="imageUploader"
+            className="ut-button:w-full ut-button:bg-gray-300"
+            onClientUploadComplete={(res) => {
+              setImageUrl(res[0].url);
+            }}
+          />
+        </div>
+
+        <div className="flex justify-around items-center lg:col-span-1 col-span-full">
+          <Checkbox size="md" value={"Smoking"}>
+            Smoking
+          </Checkbox>
+          <Checkbox size="md" value={"Pets"}>
+            Pets
+          </Checkbox>
+          <Checkbox size="md" value={"Single"}>
+            Single
+          </Checkbox>
+        </div>
+
+        <div className="lg:col-span-1 col-span-full flex justify-center items-center">
+          <RoomAdFormButton />
         </div>
       </form>
     </section>
