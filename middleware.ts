@@ -1,5 +1,6 @@
 import {
   DEFAULT_LOGIN_REDIRECT,
+  apiUploadPrefix,
   apiAuthPrefix,
   authRoutes,
   publicRoutes,
@@ -13,11 +14,15 @@ export default auth((req) => {
   // console.log("ROUTE:", nextUrl.pathname);
   // console.log("IS LOGGED IN:", isLoggedIn);
 
+  const isUploadRoute = nextUrl.pathname.startsWith(apiUploadPrefix);
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
   if (isApiAuthRoute) {
+    return;
+  }
+  if (isUploadRoute) {
     return;
   }
   if (isAuthRoute) {
