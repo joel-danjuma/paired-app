@@ -96,7 +96,7 @@ const config = {
         },
       });
       if (!existingUser) return token;
-      const profileCard = await db.roommateAd.findUnique({
+      const profileCard = await db.userProfile.findUnique({
         where: {
           user_id: existingUser.id,
         },
