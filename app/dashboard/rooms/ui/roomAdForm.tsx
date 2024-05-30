@@ -1,5 +1,5 @@
 import React from "react";
-import RoomAdFormButton from "@/app/dashboard/ui/createAdFormButton";
+import { CreateAdFormButton } from "@/app/dashboard/ui/createAdFormButton";
 // import { createRoomAd } from "../../../../../../actions/actions"
 
 const inputs = [
@@ -225,8 +225,8 @@ const RoomAdForm = () => {
         </div>
 
         <div className="col-span-full flex justify-center w-full py-8">
-                    <RoomAdFormButton />
-                </div>
+          <RoomAdFormButton />
+        </div>
       </form>
     </>
   );
