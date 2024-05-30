@@ -21,3 +21,9 @@ export const apiAuthPrefix = "/api/auth";
  * @type {string}
  */
 export const DEFAULT_LOGIN_REDIRECT = "/dashboard";
+
+/**
+ * The prefix for authentication routes
+ * @type {string}
+ */
+export const apiUploadPrefix = "/api/uploadthing";

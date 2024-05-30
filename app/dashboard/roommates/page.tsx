@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,9 +16,9 @@ import { FilterIcon } from "@/app/dashboard/ui/icons/filter";
 import { SecondaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
 import RoommateCard from "./ui/roommateCard";
 import { DashNavbar } from "../ui/navbar";
+import { db } from "@/lib/db";
 // import { Pic1, Pic2, Pic3 } from "./ui/pics"
 
-const array = [1, 2, 3, 4, 5, 6, 7];
 const ads = [
   {
     img: img,
@@ -73,7 +73,11 @@ const ads = [
   },
 ];
 
-const page = () => {
+const page = async () => {
+  // const ads = await db.userProfile.findMany({
+  //   take: 5,
+  // });
+
   return (
     <section className="h-full w-full">
       <DashNavbar />

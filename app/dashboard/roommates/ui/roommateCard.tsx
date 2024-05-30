@@ -1,7 +1,8 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
 import { Button } from "@nextui-org/button";
+import Image, { StaticImageData } from "next/image";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import { db } from "@/lib/db";
 
 interface RoommateAdProps {
   img: StaticImageData;
@@ -28,7 +29,6 @@ const RoommateCard = (roommateAd: RoommateAdProps) => {
             <div className="inline-flex space-x-2 justify-center items-center">
               <p>Age {roommateAd.age}</p>
               <p>{roommateAd.occupation}</p>
-              <p>{roommateAd.pronouns}</p>
             </div>
           </div>
           <div className="grid grid-cols-3 grid-flow-row place-items-center gap-2 px-3">

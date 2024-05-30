@@ -17,7 +17,8 @@ import { Input } from "@nextui-org/input";
 import { Logo } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 import { Button } from "@nextui-org/button";
-import { Avatar } from "@nextui-org/avatar";
+// import { Avatar } from "@nextui-org/avatar";
+import { User } from "@nextui-org/user";
 import { Divider } from "@nextui-org/divider";
 import { usePathname } from "next/navigation";
 import { MessageIcon } from "./icons/messages";
@@ -98,8 +99,11 @@ export const DashNavbar = () => {
           <NotificationIcon />
         </button>
         <div className="flex justify-center items-center gap-2 ">
-          <p className="text-md">{session?.user.name}</p>
-          <Avatar size="sm" src={session?.user.token.picture as string} />
+          <User
+            name={session?.user.name}
+            description={session?.user.location}
+            avatarProps={{ src: session?.user.image as string }}
+          />
         </div>
         <div className="max-w-[100px]">
           <SignOutButton />

@@ -1,14 +1,19 @@
 "use client";
-// import { useFormStatus } from "react-dom";
 
-const RoomAdFormButton = () => {
-  // const { pending } = FormStatus();
+import { Button } from "@nextui-org/button";
+import { useFormStatus } from "react-dom";
+
+/**
+ * Do not use if you haven't read my content
+ */
+function CreateAdFormButton({ label = "Submit" }: { label?: string }) {
+  const { pending } = useFormStatus();
+
   return (
-    <button className="flex justify-center w-full lg:w-[240px] text-black  bg-gray-300 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded-xl text-lg">
-      {/* {pending ? "Posting your Ad ..." : "Create Ad"} */}
-      {"Create Ad"}
-    </button>
+    <Button className="w-full" disabled={pending} type="submit">
+      {pending ? "Please wait..." : label}
+    </Button>
   );
-};
+}
 
-export default RoomAdFormButton;
+export { CreateAdFormButton };

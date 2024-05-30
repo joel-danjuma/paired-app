@@ -29,7 +29,7 @@ const credentialsConfig = CredentialsProvider({
     const validatedFields = LoginSchema.safeParse(credentials);
 
     if (validatedFields.success) {
-      const { email, password } = validatedFields.data;
+      const { name, email, password } = validatedFields.data;
 
       const user = await db.user.findUnique({
         where: {
@@ -39,6 +39,7 @@ const credentialsConfig = CredentialsProvider({
       if (!user || !user.password) {
         const newUser = await db.user.create({
           data: {
+            name,
             email,
             password,
           },
@@ -78,6 +79,9 @@ const config = {
       if (token.role && session.user) {
         session.user.role = token.role as UserRole;
       }
+      if (token.location && session.user.location) {
+        session.user.location = token.location as string;
+      }
       if (token) {
         session.user.token = token;
       }
@@ -91,8 +95,15 @@ const config = {
           id: token.sub,
         },
       });
-
       if (!existingUser) return token;
+      const profileCard = await db.userProfile.findUnique({
+        where: {
+          user_id: existingUser.id,
+        },
+      });
+      if (!profileCard) return token;
+
+      token.location = profileCard.location;
 
       token.role = existingUser.role;
       return token;
