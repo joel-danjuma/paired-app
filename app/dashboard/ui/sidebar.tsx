@@ -9,18 +9,13 @@ import { usePathname } from "next/navigation";
 import { DashboardIcon } from "@/app/dashboard/ui/icons/dashboard";
 import { MessageIcon } from "@/app/dashboard/ui/icons/messages";
 import { UserIcon } from "@/app/dashboard/ui/icons/users";
-import { HouseIcon } from "@/app/dashboard/ui/icons/house";
+import { BedIcon } from "@/app/dashboard/ui/icons/house";
 import { SettingsIcon } from "@/app/dashboard/ui/icons/settings";
 import { PrimaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
 
 const menuItems = [
   { title: "Home", icon: DashboardIcon, href: "/dashboard", position: "top" },
-  {
-    title: "Messages",
-    icon: MessageIcon,
-    href: "/dashboard/messages",
-    position: "top",
-  },
+
   // {
   //   title: "People",
   //   icon: UserIcon,
@@ -35,7 +30,7 @@ const menuItems = [
   },
   {
     title: "Rooms",
-    icon: HouseIcon,
+    icon: BedIcon,
     href: "/dashboard/rooms",
     position: "top",
   },
@@ -43,6 +38,12 @@ const menuItems = [
     title: "People",
     icon: UserIcon,
     href: "/dashboard/roommates",
+    position: "top",
+  },
+  {
+    title: "Messages",
+    icon: MessageIcon,
+    href: "/dashboard/messages",
     position: "top",
   },
 ];

@@ -2,6 +2,7 @@ export type SiteConfig = typeof siteConfig;
 import { DashboardIcon } from "@/app/dashboard/ui/icons/dashboard";
 import { MessageIcon } from "@/app/dashboard/ui/icons/messages";
 import { UserIcon } from "@/app/dashboard/ui/icons/users";
+import { BedIcon } from "@/app/dashboard/ui/icons/house";
 import { SettingsIcon } from "@/app/dashboard/ui/icons/settings";
 
 export const siteConfig = {
@@ -34,12 +35,12 @@ export const siteConfig = {
     { title: "Home", icon: DashboardIcon, href: "/dashboard", position: "top" },
     {
       title: "Rooms",
-      icon: UserIcon,
+      icon: BedIcon,
       href: "/dashboard/rooms",
       position: "bottom",
     },
     {
-      title: "Roommates",
+      title: "People",
       icon: UserIcon,
       href: "/dashboard/roommates",
       position: "bottom",
