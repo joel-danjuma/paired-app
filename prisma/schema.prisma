@@ -34,6 +34,52 @@ model User {
   @@map("users")
 }
 
+model UserProfile {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  age        Int
+  gender     String
+  location   String
+  interests  String[]
+  bio        String
+  image      String?
+  occupation String
+  // budget     Int
+  pets       Boolean
+  smoking    Boolean
+  likes      Int?
+  socials    String?
+  paired     Boolean  @default(false)
+  created_by User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id    String   @unique @db.ObjectId
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("profile")
+}
+
+model RoomAd {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  description   String
+  propertyType  String
+  image         String[]
+  rent          Int
+  bedrooms      Int
+  bathrooms     Int
+  location      String
+  pets          Boolean
+  smoking       Boolean
+  serviced      Boolean
+  serviceCharge Int
+  created_by    User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id       String   @db.ObjectId
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  @@map("rooms")
+}
+
 model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
   userId            String  @db.ObjectId
@@ -89,48 +135,6 @@ model Authenticator {
   transports           String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model RoomAd {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  title         String
-  description   String
-  propertyType  String
-  rent          Int
-  bedrooms      Int
-  bathrooms     Int
-  location      String
-  pets          Boolean
-  smoking       Boolean
-  serviced      Boolean
-  serviceCharge Int
-  created_by    User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  user_id       String   @db.ObjectId
-  created_at    DateTime @default(now())
-  updated_at    DateTime @updatedAt
-
-  @@map("rooms")
-}
-
-model UserProfile {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  description String
-  age         Int
-  occupation  String
-  location    String
-  budget      Int
-  bio         String
-  hobbies     String[]
-  gender      String
-  pets        Boolean
-  smoking     Boolean
-  created_by  User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  user_id     String   @unique @db.ObjectId
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-
-  @@map("profile")
 }
 
 // model Waitlist {
