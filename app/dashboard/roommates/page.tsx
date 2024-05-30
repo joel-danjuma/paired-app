@@ -74,9 +74,9 @@ const ads = [
 ];
 
 const page = async () => {
-  const ads = await db.roommateAd.findMany({
-    take: 5,
-  });
+  // const ads = await db.userProfile.findMany({
+  //   take: 5,
+  // });
 
   return (
     <section className="h-full w-full">

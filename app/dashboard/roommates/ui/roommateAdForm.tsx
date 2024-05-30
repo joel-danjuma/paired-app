@@ -1,9 +1,11 @@
 "use client";
-import RoomAdFormButton from "@/app/dashboard/ui/createAdFormButton";
+import { CreateAdFormButton } from "@/app/dashboard/ui/createAdFormButton";
 import { UploadButton, UploadDropzone } from "@/lib/utils";
-import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
+import { Checkbox } from "@nextui-org/checkbox";
 import { Select, SelectItem } from "@nextui-org/select";
 import { Input, Textarea } from "@nextui-org/input";
+import { testForm } from "@/actions/actions";
+import { Button } from "@nextui-org/button";
 import img from "@/public/pairedLogo.png";
 import Image from "next/image";
 import React from "react";
@@ -15,7 +17,10 @@ const RoommateAdForm = () => {
 
   return (
     <section className="h-full ">
-      <form className="py-2 grid grid-flow-row  lg:grid-cols-2 grid-cols-1 gap-4">
+      <form
+        action={testForm}
+        className="py-2 grid grid-flow-row  lg:grid-cols-2 grid-cols-1 gap-4"
+      >
         <div className="mt-4 space-y-2 lg:col-span-1 col-span-full">
           <Input
             size="lg"
@@ -54,25 +59,25 @@ const RoommateAdForm = () => {
             size="lg"
             name="location"
             label="Location"
-            placeholder="Full Name"
+            placeholder="Locatioin"
             labelPlacement="outside"
           />
         </div>
         <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
           <Input
             size="lg"
-            name="name"
+            name="interests"
             label="Interests"
-            placeholder="Full Name"
+            placeholder="Eg Running, Soccer..."
             labelPlacement="outside"
           />
         </div>
         <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
           <Input
             size="lg"
-            name="name"
+            name="occupation"
             label="Occupation"
-            placeholder="Full Name"
+            placeholder="Student, Professional, Corp Member"
             labelPlacement="outside"
           />
         </div>
@@ -132,7 +137,8 @@ const RoommateAdForm = () => {
         </div>
 
         <div className="lg:col-span-1 col-span-full flex justify-center items-center">
-          <RoomAdFormButton />
+          <CreateAdFormButton />
+          {/* <Button type="submit">Submit</Button> */}
         </div>
       </form>
     </section>
