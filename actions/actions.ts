@@ -8,7 +8,7 @@ import { AuthError } from "next-auth";
 import { LoginSchema, ProfileSchema } from "@/schemas";
 import { RegisterSchema } from "@/schemas";
 
-const session = await auth();
+const session = auth();
 
 export async function testForm(formData: FormData) {
   if (!formData) {
