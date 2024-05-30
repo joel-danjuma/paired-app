@@ -35,7 +35,7 @@ const RoommateAdForm = () => {
       location: "",
       occupation: "",
       bio: "",
-      interests: "",
+      interests: [""],
       image: imageUrl || "",
       pets: false,
       smoking: false,
@@ -145,7 +145,7 @@ const RoommateAdForm = () => {
               )}
             />
           </div>
-          <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
+          {/* <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
             <FormField
               control={form.control}
               name="interests"
@@ -164,7 +164,7 @@ const RoommateAdForm = () => {
                 </FormItem>
               )}
             />
-          </div>
+          </div> */}
           <div className="mt-4 space-y-4 lg:col-span-1 col-span-full">
             <FormField
               control={form.control}
