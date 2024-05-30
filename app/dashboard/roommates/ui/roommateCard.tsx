@@ -14,12 +14,7 @@ interface RoommateAdProps {
   bio: string;
 }
 
-const RoommateCard = async (roommateAd: RoommateAdProps) => {
-  // const user = await db.user.findUnique({
-  //   where: {
-  //     id: roommateAd.id,
-  //   },
-  // });
+const RoommateCard = (roommateAd: RoommateAdProps) => {
   return (
     <>
       <Card className="flex max-w-[340px] h-[680px] flex-col  lg:row-span-2 lg:col-span-1 row-span-1 col-span-full md:col-span-1 md:row-span-2">

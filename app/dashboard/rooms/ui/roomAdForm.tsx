@@ -225,7 +225,7 @@ const RoomAdForm = () => {
         </div>
 
         <div className="col-span-full flex justify-center w-full py-8">
-          <RoomAdFormButton />
+          <CreateAdFormButton />
         </div>
       </form>
     </>
