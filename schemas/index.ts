@@ -39,16 +39,15 @@ export const RegisterSchema = z.object({
 });
 
 export const ProfileSchema = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
-  age: z.number().optional(),
-  occupation: z.string().optional(),
-  location: z.string().optional(),
-  budget: z.string().optional(),
-  bio: z.string().optional(),
-  hobbies: z.string().optional(),
-  gender: z.string().optional(),
-  pets: z.boolean().optional(),
-  smoking: z.boolean().optional(),
-  userId: z.string(),
+  name: z.string(),
+  age: z.number().default(0),
+  gender: z.string(),
+  location: z.string(),
+  occupation: z.string(),
+  bio: z.string(),
+  interests: z.string().array(),
+  image: z.string(),
+  pets: z.boolean(),
+  smoking: z.boolean(),
+  single: z.boolean(),
 });

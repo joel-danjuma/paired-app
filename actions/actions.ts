@@ -8,14 +8,68 @@ import { AuthError } from "next-auth";
 import { LoginSchema, ProfileSchema } from "@/schemas";
 import { RegisterSchema } from "@/schemas";
 
-const session = auth();
-
-export async function testForm(formData: FormData) {
-  if (!formData) {
-    console.log("Form Does not work");
+export async function testForm(values: z.infer<typeof ProfileSchema>) {
+  const validatedFields = ProfileSchema.safeParse(values);
+  if (!validatedFields.success) {
+    let errorMessage = "";
+    validatedFields.error.issues.forEach((issue) => {
+      errorMessage = errorMessage + issue.path[0] + ": " + issue.message + ". ";
+    });
+    console.log({
+      error: errorMessage,
+    });
+    return;
   }
-  console.log(`Form Data : ${formData}`);
+  const {
+    name,
+    age,
+    gender,
+    location,
+    occupation,
+    bio,
+    interests,
+    image,
+    pets,
+    smoking,
+    single,
+  } = validatedFields.data;
+  const session = await auth();
+  const user = session?.user;
+
+  const data = {
+    name,
+    age,
+    gender,
+    location,
+    occupation,
+    bio,
+    interests,
+    image,
+    pets,
+    smoking,
+    single,
+    created_by: {
+      connect: {
+        id: user?.id,
+      },
+    },
+  };
+  await db.userProfile.create({
+    data: data,
+  });
+  console.log("User profile created : ", data);
 }
+
+// export async function testForm(formData: FormData) {
+//   if (!formData) {
+//     console.log("Form Not Working");
+//   }
+//   const single = formData.get("single") == "true";
+//   const smoking = formData.get("smoking") == "true";
+//   const pets = formData.get("pets") == "true";
+
+//   console.log({ single, smoking, pets });
+// }
 
 // export const createRoomAd = async (formData : FormData) => {
 //   const title = formData.get("title");

@@ -44,9 +44,9 @@ model UserProfile {
   bio        String
   image      String?
   occupation String
-  // budget     Int
   pets       Boolean
   smoking    Boolean
+  single     Boolean
   likes      Int?
   socials    String?
   paired     Boolean  @default(false)
