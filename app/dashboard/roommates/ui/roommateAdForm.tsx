@@ -216,14 +216,30 @@
 // export default RoommateAdForm;
 
 import React from "react";
+import { Button } from "@nextui-org/button";
+import { toast } from "sonner";
 import { CreateAdFormButton } from "@/app/dashboard/ui/createAdFormButton";
 import { Select, SelectItem } from "@nextui-org/select";
 import { Input, Textarea } from "@nextui-org/input";
 import { Checkbox } from "@nextui-org/checkbox";
 import { testForm } from "@/actions/actions";
+import { FileUploader } from "@/components/file-uploader";
+import { UploadedFilesCard } from "@/components/uploaded-files-card";
+
 import { UploadButton, UploadDropzone } from "@/lib/utils";
 import img from "@/public/pairedLogo.png";
 import Image from "next/image";
+import { z } from "zod";
+import { ImageUploader } from "@/components/imageUploader";
+import { getErrorMessage } from "@/lib/handle-error";
+import { useUploadFile } from "@/hooks/use-upload-file";
+import { Label } from "@/components/ui/label";
+
+const schema = z.object({
+  images: z.array(z.instanceof(File)),
+});
+
+type Schema = z.infer<typeof schema>;
 
 interface PreferencesState {
   pets: boolean;
@@ -246,6 +262,11 @@ interface FormValues {
 }
 
 const RoommateAdForm = () => {
+  const [loading, setLoading] = React.useState(false);
+  const { uploadFiles, progresses, uploadedFiles, isUploading } = useUploadFile(
+    "imageUploader",
+    { defaultUploadedFiles: [] }
+  );
   const gender = [
     {
       key: "Male",
@@ -268,6 +289,14 @@ const RoommateAdForm = () => {
     target: { value: React.SetStateAction<string> };
   }) => {
     setValue(e.target.value);
+  };
+
+  const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
+  const prepareUploadData = (files: File[]) => {
+    return { images: files };
+  };
+  const handleFileChange = (files: File[]) => {
+    setSelectedFiles(files);
   };
 
   const togglePreference = (preferenceKey: keyof PreferencesState) => {
@@ -306,12 +335,28 @@ const RoommateAdForm = () => {
       single,
       pets,
     };
+    setLoading(true);
+
+    const uploadData = prepareUploadData(selectedFiles);
+
+    toast.promise(uploadFiles(uploadData.images), {
+      loading: "Uploading images...",
+      success: () => {
+        setLoading(false);
+        return "Images uploaded";
+      },
+      error: (err) => {
+        setLoading(false);
+        return getErrorMessage(err);
+      },
+    });
 
     await testForm(values);
   };
 
   return (
     <section className="h-full ">
+      {/* <ImageUploader /> */}
       <form
         onSubmit={handleSubmit}
         className="py-2 grid grid-flow-row  lg:grid-cols-2 grid-cols-1 gap-4"
@@ -393,34 +438,26 @@ const RoommateAdForm = () => {
             />
           </div>
         </div>
-        <div className="space-y-4 lg:mt-12 mt-4">
-          {/* <div className="space-y-1 lg:col-span-1 col-span-full lg:w-[558.5px] lg:h-[150px] rounded-lg bg-gray-100 relative p-4 flex justify-center items-center">
-            {imageUrl.length ? (
-              <Image
-                className="rounded-lg"
-                src={imageUrl}
-                alt="img"
-                width={200}
-                height={200}
-              />
-            ) : (
-              <Image
-                className="rounded-lg opacity-35"
-                src={img}
-                alt="img"
-                width={200}
-                height={100}
-              />
-            )}
-          </div> */}
-          <UploadDropzone
-            endpoint="imageUploader"
-            className="ut-button:w-full ut-button:bg-gray-300"
-            onClientUploadComplete={(res) => {
-              setImageUrl(res[0].url);
-              console.log(res[0].url);
-            }}
-          />
+        <div className="space-y-2 mt-4">
+          <Label className="">Images</Label>
+          <div className="">
+            <FileUploader
+              value={selectedFiles}
+              onValueChange={handleFileChange}
+              maxFiles={4}
+              maxSize={4 * 1024 * 1024}
+              progresses={progresses}
+              // pass the onUpload function here for direct upload
+              onUpload={uploadFiles}
+              disabled={isUploading}
+            />
+            {uploadedFiles.length > 0 ? (
+              <UploadedFilesCard uploadedFiles={uploadedFiles} />
+            ) : null}
+          </div>
+          <Button color="primary" className="w-full" disabled={loading}>
+            Save
+          </Button>
         </div>
 
         <div className="flex justify-around items-center lg:col-span-1 col-span-full">

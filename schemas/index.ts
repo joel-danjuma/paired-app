@@ -46,7 +46,7 @@ export const ProfileSchema = z.object({
   occupation: z.string(),
   bio: z.string(),
   interests: z.string().array(),
-  image: z.string(),
+  images: z.array(z.instanceof(File)),
   pets: z.boolean(),
   smoking: z.boolean(),
   single: z.boolean(),

@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/dashboard/ui/icons/dashboard.js", "app/dashboard/ui/icons/calendar.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/dashboard/ui/icons/dashboard.js", "app/dashboard/ui/icons/calendar.js", "env.js"],
   "exclude": ["node_modules"]
 }

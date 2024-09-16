@@ -3,7 +3,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Avatars from "@/app/dashboard/ui/avatar";
-import RoommateAdForm from "./ui/roommateAdForm";
+import RoommateAdForm from "./ui/adForm2";
+// import RoommateAdForm from "./ui/roommateAdForm";
 import img from "@/public/picture.jpg";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
@@ -17,6 +18,7 @@ import { SecondaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
 import RoommateCard from "./ui/roommateCard";
 import { DashNavbar } from "../ui/navbar";
 import { db } from "@/lib/db";
+import { ImageUploader } from "@/components/imageUploader";
 // import { Pic1, Pic2, Pic3 } from "./ui/pics"
 
 const ads = [
@@ -138,7 +140,8 @@ const page = async () => {
         <h1 className="lg:text-4xl text-xl font-bold text-start py-8">
           Create Profile Card
         </h1>
-        <RoommateAdForm />
+        {/* <RoommateAdForm /> */}
+        <ImageUploader />
       </div>
     </section>
   );

@@ -4,17 +4,29 @@ import { UploadButton, UploadDropzone } from "@/lib/utils";
 import { Checkbox } from "@nextui-org/checkbox";
 import { Select, SelectItem } from "@nextui-org/select";
 import { Input, Textarea } from "@nextui-org/input";
-import { testForm } from "@/actions/actions";
+import { testForm2 } from "@/actions/actions";
 import { Button } from "@nextui-org/button";
 import img from "@/public/pairedLogo.png";
 import Image from "next/image";
+import { toast } from "sonner";
 import React from "react";
 import * as z from "zod";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { ProfileSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { startTransition } from "react";
+import { FileUploader } from "@/components/file-uploader";
+import { UploadedFilesCard } from "@/components/uploaded-files-card";
+import { getErrorMessage } from "@/lib/handle-error";
+import { useUploadFile } from "@/hooks/use-upload-file";
 
 const gender = ["Male", "Female", "Prefer Not to Say"];
 
@@ -26,6 +38,12 @@ const RoommateAdForm = () => {
   const [singleIsSelected, setSingleIsSelected] =
     React.useState<boolean>(false);
 
+  const [loading, setLoading] = React.useState(false);
+  const { uploadFiles, progresses, uploadedFiles, isUploading } = useUploadFile(
+    "imageUploader",
+    { defaultUploadedFiles: [] }
+  );
+
   const form = useForm<z.infer<typeof ProfileSchema>>({
     resolver: zodResolver(ProfileSchema),
     defaultValues: {
@@ -36,25 +54,42 @@ const RoommateAdForm = () => {
       occupation: "",
       bio: "",
       interests: [""],
-      image: imageUrl || "",
+      images: [],
       pets: false,
       smoking: false,
       single: false,
     },
   });
 
-  // const onSubmit = async (values: z.infer<typeof ProfileSchema>) => {
-  //   startTransition(() => {
-  //     testForm(values);
-  //   });
-  // };
+  const onSubmit = async (
+    values: z.infer<typeof ProfileSchema>
+    // event?: React.BaseSyntheticEvent<HTMLDivElement, Event, HTMLFormElement>
+  ) => {
+    startTransition(() => {
+      testForm2(values);
+      setLoading(true);
+
+      toast.promise(uploadFiles(values.images), {
+        loading: "Uploading images...",
+        success: () => {
+          form.reset();
+          setLoading(false);
+          return "Images uploaded";
+        },
+        error: (err) => {
+          setLoading(false);
+          return getErrorMessage(err);
+        },
+      });
+    });
+  };
 
   return (
     <section className="h-full ">
       <Form {...form}>
         <form
           // action={testForm}
-          // onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(onSubmit)}
           className="py-2 grid grid-flow-row  lg:grid-cols-2 grid-cols-1 gap-4"
         >
           <div className="mt-4 space-y-2 lg:col-span-1 col-span-full">
@@ -211,32 +246,36 @@ const RoommateAdForm = () => {
             </div>
           </div>
           <div className="space-y-4 lg:mt-12 mt-4">
-            <div className="space-y-1 lg:col-span-1 col-span-full lg:w-[558.5px] lg:h-[150px] rounded-lg bg-gray-100 relative p-4 flex justify-center items-center">
-              {imageUrl.length ? (
-                <Image
-                  className="rounded-lg"
-                  src={imageUrl}
-                  alt="img"
-                  width={200}
-                  height={200}
-                />
-              ) : (
-                <Image
-                  className="rounded-lg opacity-35"
-                  src={img}
-                  alt="img"
-                  width={200}
-                  height={100}
-                />
+            <FormField
+              control={form.control}
+              name="images"
+              render={({ field }) => (
+                <div className="space-y-6">
+                  <FormItem className="w-full">
+                    <FormLabel>Images</FormLabel>
+                    <FormControl>
+                      <FileUploader
+                        value={field.value}
+                        onValueChange={field.onChange}
+                        maxFiles={4}
+                        maxSize={4 * 1024 * 1024}
+                        progresses={progresses}
+                        // pass the onUpload function here for direct upload
+                        // onUpload={uploadFiles}
+                        disabled={isUploading}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                  {uploadedFiles.length > 0 ? (
+                    <UploadedFilesCard uploadedFiles={uploadedFiles} />
+                  ) : null}
+                </div>
               )}
-            </div>
-            <UploadButton
-              endpoint="imageUploader"
-              className="ut-button:w-full ut-button:bg-gray-300"
-              onClientUploadComplete={(res) => {
-                setImageUrl(res[0].url);
-              }}
             />
+            <Button className="w-full" disabled={loading}>
+              Save
+            </Button>
           </div>
 
           <div className="flex justify-around items-center lg:col-span-1 col-span-full">

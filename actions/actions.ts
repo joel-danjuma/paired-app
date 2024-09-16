@@ -8,214 +8,61 @@ import { AuthError } from "next-auth";
 import { LoginSchema, ProfileSchema } from "@/schemas";
 import { RegisterSchema } from "@/schemas";
 
-export async function testForm(values: z.infer<typeof ProfileSchema>) {
-  const validatedFields = ProfileSchema.safeParse(values);
-  if (!validatedFields.success) {
-    let errorMessage = "";
-    validatedFields.error.issues.forEach((issue) => {
-      errorMessage = errorMessage + issue.path[0] + ": " + issue.message + ". ";
-    });
-    console.log({
-      error: errorMessage,
-    });
-    return;
-  }
-  const {
-    name,
-    age,
-    gender,
-    location,
-    occupation,
-    bio,
-    interests,
-    image,
-    pets,
-    smoking,
-    single,
-  } = validatedFields.data;
-  const session = await auth();
-  const user = session?.user;
-
-  const data = {
-    name,
-    age,
-    gender,
-    location,
-    occupation,
-    bio,
-    interests,
-    image,
-    pets,
-    smoking,
-    single,
-    created_by: {
-      connect: {
-        id: user?.id,
-      },
-    },
-  };
-  await db.userProfile.create({
-    data: data,
-  });
-  console.log("User profile created : ", data);
-}
-
-// export async function testForm(formData: FormData) {
-//   if (!formData) {
-//     console.log("Form Not Working");
-//   }
-//   const single = formData.get("single") == "true";
-//   const smoking = formData.get("smoking") == "true";
-//   const pets = formData.get("pets") == "true";
-
-//   console.log({ single, smoking, pets });
-// }
-
-// export const createRoomAd = async (formData : FormData) => {
-//   const title = formData.get("title");
-//   const description = formData.get("description");
-//   const propertyType = formData.get("propertyType");
-//   const rent = parseInt(formData.get("rent"));
-//   const bedrooms = parseInt(formData.get("bedrooms"));
-//   const bathrooms = parseInt(formData.get("bathrooms"));
-//   const location = formData.get("location");
-//   const pets = formData.get("pets").toLowerCase() === "true";
-//   // const email = formData.get("email")
-//   const email = session?.user.email;
-//   const smoking = formData.get("smoking").toLowerCase() === "true";
-//   const serviced = formData.get("serviced").toLowerCase() === "true";
-//   const serviceCharge = parseInt(formData.get("serviceCharge"));
-
-//   const data = {
-//     title,
-
-//     description,
-//     propertyType,
-//     rent,
-//     bedrooms,
-//     bathrooms,
-//     location,
-//     pets,
-//     smoking,
-//     serviced,
-//     serviceCharge,
-//   };
-
-//   // return roomAd
-
-//   const user = await prisma.user.findUnique({
-//     where: {
-//       email,
-//     },
-//   });
-
-//   const roomAd = await db.roomAd.create({
-//     data,
-//   });
-
-//   return roomAd;
-
-//   //   This is an amazing 3 bed Shared flat available for immediate occupation. Located in a serene and secure part of GRA port harcourt
-//   //   Facilities include :
-//   // - Security Post and Serviced Estate
-//   // - 18hr Power supply
-//   // - Good access roads to the estate
-//   // - centrally located
-//   // - close proximity to churches and entertainment
-
-//   // const roomAd = await prisma.roomAd.create({
-//   //     data: {
-//   //         title,
-//   //         description,
-//   //         propertyType,
-//   //         rent,
-//   //         bedrooms,
-//   //         bathrooms,
-//   //         location,
-//   //         pets,
-//   //         smoking,
-//   //         serviced,
-//   //         serviceCharge,
-//   //         created_by: {
-//   //             connect: {
-//   //                 id: user.id,
-//   //             },
-//   //         },
-//   //     },
-//   // })
-// };
-
-// export const createProfileCard = async (formData) => {
-//   const validatedFields = ProfileSchema.safeParse(formData);
+// export async function testForm(values: z.infer<typeof ProfileSchema>) {
+//   const validatedFields = ProfileSchema.safeParse(values);
 //   if (!validatedFields.success) {
 //     let errorMessage = "";
 //     validatedFields.error.issues.forEach((issue) => {
 //       errorMessage = errorMessage + issue.path[0] + ": " + issue.message + ". ";
 //     });
-//     return {
+//     console.log({
 //       error: errorMessage,
-//     };
+//     });
+//     return;
 //   }
-
-//   const { userId, location, age } = validatedFields.data;
-
-//   // const user = await db.user.findUnique({
-//   //   where : {
-//   //     id : validatedFields.data.userId
-//   //   }
-//   // })
-// };
-
-// export const createRoommateAd = async (formData) => {
-//   const title = formData.get("title");
-//   const description = formData.get("description");
-//   const age = formData.get("age");
-//   const gender = formData.get("bathrooms");
-//   const budget = formData.get("bedrooms");
-//   const occupation = formData.get("rent");
-//   const location = formData.get("location");
-//   const pets = formData.get("pets").toLowerCase() === "true";
-//   const email = formData.get("email");
-//   const smoking = formData.get("smoking").toLowerCase() === "true";
-
-//   const roommateAd = {
-//     title,
-//     description,
+//   const {
+//     name,
 //     age,
 //     gender,
-//     budget,
-//     occupation,
 //     location,
+//     occupation,
+//     bio,
+//     interests,
+//     image,
 //     pets,
 //     smoking,
+//     single,
+//   } = validatedFields.data;
+//   const session = await auth();
+//   const user = session?.user;
+
+//   const data = {
+//     name,
+//     age,
+//     gender,
+//     location,
+//     occupation,
+//     bio,
+//     interests,
+//     image,
+//     pets,
+//     smoking,
+//     single,
+//     created_by: {
+//       connect: {
+//         id: user?.id,
+//       },
+//     },
 //   };
+//   await db.userProfile.create({
+//     data: data,
+//   });
+//   console.log("User profile created : ", data);
+// }
 
-//   // const user = await prisma.user.findUnique({
-//   //     where: {
-//   //         email,
-//   //     },
-//   // })
-
-//   // const roommateAd = await prisma.roommateAd.create({
-//   //     data: {
-//   //         title,
-//   //         description,
-//   //         age,
-//   //         gender,
-//   //         budget,
-//   //         occupation,
-//   //         location,
-//   //         pets,
-//   //         smoking,
-//   //         created_by: {
-//   //             connect: {
-//   //                 id: user.id,
-//   //             },
-//   //         },
-//   //     },
-//   // })
-//   return roommateAd;
-// };
+export async function testForm2(values: unknown) {
+  console.log(values);
+}
 
 export async function login(values: z.infer<typeof LoginSchema>) {
   const validatedFields = LoginSchema.safeParse(values);
