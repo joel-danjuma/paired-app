@@ -10,7 +10,7 @@ import * as z from "zod";
 import { LoginSchema } from "@/schemas";
 import { login } from "@/actions/actions";
 import { useForm } from "react-hook-form";
-import { Input } from "@nextui-org/input";
+import { Input } from "@heroui/input";
 import FormError from "../../ui/form-error";
 import FormSuccess from "../../ui/form-success";
 import { Button } from "@/components/ui/button";

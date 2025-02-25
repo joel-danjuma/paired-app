@@ -1,8 +1,8 @@
 "use client";
 // import { CreateAdFormButton } from "@/app/dashboard/ui/createAdFormButton";
-// import { Select, SelectItem } from "@nextui-org/select";
-// import { Input, Textarea } from "@nextui-org/input";
-// import { Checkbox } from "@nextui-org/checkbox";
+// import { Select, SelectItem } from "@heroui/select";
+// import { Input, Textarea } from "@heroui/input";
+// import { Checkbox } from "@heroui/checkbox";
 // import { testForm } from "@/actions/actions";
 // import { UploadButton } from "@/lib/utils";
 // import img from "@/public/pairedLogo.png";
@@ -217,9 +217,9 @@
 
 import React from "react";
 import { CreateAdFormButton } from "@/app/dashboard/ui/createAdFormButton";
-import { Select, SelectItem } from "@nextui-org/select";
-import { Input, Textarea } from "@nextui-org/input";
-import { Checkbox } from "@nextui-org/checkbox";
+import { Select, SelectItem } from "@heroui/select";
+import { Input, Textarea } from "@heroui/input";
+import { Checkbox } from "@heroui/checkbox";
 import { testForm } from "@/actions/actions";
 import { UploadButton, UploadDropzone } from "@/lib/utils";
 import img from "@/public/pairedLogo.png";

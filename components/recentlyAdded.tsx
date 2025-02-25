@@ -1,17 +1,16 @@
-import { Card, CardHeader, CardFooter, CardBody } from "@nextui-org/card";
+import { Card, CardHeader, CardFooter, CardBody } from "@heroui/card";
 import Image from "next/image";
 import PageTitle from "@/components/pageTitle";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import img from "@/public/heroImg1.jpg";
-import { Avatar, AvatarGroup } from "@nextui-org/avatar";
+import { Avatar, AvatarGroup } from "@heroui/avatar";
 
 const array = [1, 2, 3, 4];
 
 const RecentlyAdded = () => {
   return (
-    <section className="flex-col max-w-[1440px] p-4 pt-0">
+    (<section className="flex-col max-w-[1440px] p-4 pt-0">
       <PageTitle>Newest Rooms</PageTitle>
-
       <div className="grid lg:grid-cols-4 grid-rows-2 grid-cols-2 grid-flow-row w-full h-[30%] gap-4">
         {array.map((item, i) => {
           return (
@@ -38,7 +37,7 @@ const RecentlyAdded = () => {
             //         </div>
             //     </CardBody>
             // </Card>
-            <Card
+            (<Card
               key={i}
               className="flex min-w-[320px] h-fit flex-col  lg:row-span-2 lg:col-span-1 p-4 row-span-1 col-span-full md:col-span-1 md:row-span-2"
             >
@@ -56,7 +55,6 @@ const RecentlyAdded = () => {
                   </h1>
                 </div>
               </CardHeader>
-
               <CardBody className="flex-col aspect-video rounded-lg relative">
                 <Image src={img} alt="img" fill></Image>
               </CardBody>
@@ -79,7 +77,7 @@ const RecentlyAdded = () => {
                   <p>2 Spaces</p>
                 </>
               </CardFooter>
-            </Card>
+            </Card>)
           );
         })}
       </div>
@@ -113,7 +111,7 @@ const RecentlyAdded = () => {
           );
         })}
       </div>
-    </section>
+    </section>)
   );
 };
 

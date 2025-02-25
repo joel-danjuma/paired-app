@@ -3,11 +3,11 @@ import { auth } from "@/auth";
 import Image from "next/image";
 import Group from "./ui/avatarGroup";
 import { DashNavbar } from "./ui/navbar";
-import { Avatar } from "@nextui-org/avatar";
-import { Button } from "@nextui-org/button";
+import { Avatar } from "@heroui/avatar";
+import { Button } from "@heroui/button";
 import img from "@/public/pairedLogoPurple.png";
 import img2 from "@/public/pairedLogoPurple2.svg";
-import { Card, CardBody, CardHeader } from "@nextui-org/card";
+import { Card, CardBody, CardHeader } from "@heroui/card";
 
 const arr = new Array(5).fill({
   name: "Olabisi Oluwatosin",

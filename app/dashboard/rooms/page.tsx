@@ -5,17 +5,17 @@ import Image from "next/image";
 import RoomCard from "../ui/roomCard";
 import img from "@/public/heroImg1.jpg";
 import { DashNavbar } from "../ui/navbar";
-import { Button } from "@nextui-org/button";
-import { Divider } from "@nextui-org/divider";
+import { Button } from "@heroui/button";
+import { Divider } from "@heroui/divider";
 import Avatars from "@/app/dashboard/ui/avatar";
-import { Avatar, AvatarGroup } from "@nextui-org/avatar";
+import { Avatar, AvatarGroup } from "@heroui/avatar";
 import { UserIcon } from "@/app/dashboard/ui/icons/users";
 import RoomAdForm from "@/app/dashboard/rooms/ui/roomAdForm";
 import { FilterIcon } from "@/app/dashboard/ui/icons/filter";
 import { MessageIcon } from "@/app/dashboard/ui/icons/messages";
 import { CalendarIcon } from "@/app/dashboard/ui/icons/calendar";
 import { SecondaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 
 const array = [1, 2, 3, 4, 5, 6, 7];
 

@@ -7,21 +7,21 @@ import {
   NavbarBrand,
   NavbarItem,
   NavbarMenuItem,
-} from "@nextui-org/navbar";
+} from "@heroui/navbar";
 import clsx from "clsx";
 import React from "react";
 import Image from "next/image";
 import NextLink from "next/link";
-import { Kbd } from "@nextui-org/kbd";
-import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
+import { Kbd } from "@heroui/kbd";
+import { Link } from "@heroui/link";
+import { Input } from "@heroui/input";
 import { siteConfig } from "@/config/site";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import { usePathname } from "next/navigation";
 import { SearchIcon } from "@/components/icons";
 import logoSmall from "@/public/pairedLogo.png";
 import logoFull from "@/public/pairedLogo2.png";
-import { link as linkStyles } from "@nextui-org/theme";
+import { link as linkStyles } from "@heroui/theme";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { PrimaryLogo } from "@/app/dashboard/ui/icons/pairedLogo";
 

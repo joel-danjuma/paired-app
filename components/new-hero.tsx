@@ -5,7 +5,7 @@ import heroImg3 from "@/public/heroImg3.jpg";
 import heroImg1 from "@/public/heroImg1.jpg";
 import heroImg2 from "@/public/heroImg2.jpg";
 import PageTitle from "@/components/pageTitle";
-import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
+import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
 
 const features = [
   {

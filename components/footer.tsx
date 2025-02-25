@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { GithubIcon } from "@/components/icons";
-import { Divider } from "@nextui-org/divider";
+import { Divider } from "@heroui/divider";
 import Image from "next/image";
 import logo from "@/public/pairedLogo.png";
 

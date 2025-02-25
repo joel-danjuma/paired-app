@@ -1,7 +1,7 @@
 "use client";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
-import { Button } from "@nextui-org/button";
-import { Divider } from "@nextui-org/divider";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
+import { Button } from "@heroui/button";
+import { Divider } from "@heroui/divider";
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";

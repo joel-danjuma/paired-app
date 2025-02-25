@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/form";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
-import { Input } from "@nextui-org/input";
+import { Input } from "@heroui/input";
 import { RegisterSchema } from "@/schemas";
 import { signup } from "@/actions/actions";
 import FormError from "../../ui/form-error";

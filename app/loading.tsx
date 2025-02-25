@@ -1,5 +1,5 @@
 "use client";
-import { Spinner } from "@nextui-org/spinner";
+import { Spinner } from "@heroui/spinner";
 
 const Loading = () => {
   return (

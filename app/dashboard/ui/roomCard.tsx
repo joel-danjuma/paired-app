@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Avatar, AvatarGroup } from "@nextui-org/avatar";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import { Avatar, AvatarGroup } from "@heroui/avatar";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 
 interface RoomAdProps {
   paired: boolean;

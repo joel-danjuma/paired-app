@@ -1,9 +1,9 @@
 import React from "react";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 import { UserProfile } from "@prisma/client";
-import { Avatar } from "@nextui-org/avatar";
-import { Button } from "@nextui-org/button";
-import { User } from "@nextui-org/user";
+import { Avatar } from "@heroui/avatar";
+import { Button } from "@heroui/button";
+import { User } from "@heroui/user";
 import { db } from "@/lib/db";
 
 const RoommmateCard2 = async (profile: UserProfile) => {

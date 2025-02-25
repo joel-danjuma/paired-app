@@ -6,20 +6,20 @@ import {
   NavbarMenuToggle,
   NavbarItem,
   NavbarMenuItem,
-} from "@nextui-org/navbar";
+} from "@heroui/navbar";
 import clsx from "clsx";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { auth } from "@/auth";
-import { Kbd } from "@nextui-org/kbd";
-import { Input } from "@nextui-org/input";
+import { Kbd } from "@heroui/kbd";
+import { Input } from "@heroui/input";
 import { Logo } from "@/components/icons";
 import { siteConfig } from "@/config/site";
-import { Button } from "@nextui-org/button";
-// import { Avatar } from "@nextui-org/avatar";
-import { User } from "@nextui-org/user";
-import { Divider } from "@nextui-org/divider";
+import { Button } from "@heroui/button";
+// import { Avatar } from "@heroui/avatar";
+import { User } from "@heroui/user";
+import { Divider } from "@heroui/divider";
 import { usePathname } from "next/navigation";
 import { MessageIcon } from "./icons/messages";
 import { SmallLogo } from "./icons/pairedLogo";

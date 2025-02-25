@@ -2,7 +2,7 @@ import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
-import { user } from "@nextui-org/theme";
+import { user } from "@heroui/theme";
 
 const f = createUploadthing();
 

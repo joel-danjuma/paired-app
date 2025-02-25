@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, AvatarGroup } from "@nextui-org/avatar";
+import { Avatar, AvatarGroup } from "@heroui/avatar";
 
 export default function Group() {
   return (

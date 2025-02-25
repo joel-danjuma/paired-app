@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import Image, { StaticImageData } from "next/image";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 import { db } from "@/lib/db";
 
 interface RoommateAdProps {
